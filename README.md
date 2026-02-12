@@ -18,6 +18,7 @@ stored.
 P
 ## PROGRAM - ARP
 ## server.py:
+```
 import socket
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('localhost', 8080))
@@ -46,8 +47,9 @@ while True:
 
 conn.close()
 server.close()
-
+```
 ## client.py:
+```
 import socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('localhost', 8080))
@@ -63,6 +65,7 @@ while True:
     print("MAC Address:", mac)
 
 client.close()
+```
 ## OUPUT - ARP
 ## SERVER:
 ![alt text](ARPserver.py.png)
@@ -71,9 +74,9 @@ client.close()
 
 ## PROGRAM - RARP
 ## server.py:
+```
 import socket
 
-# Create TCP socket
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('localhost', 9090))
 server.listen(1)
@@ -84,7 +87,6 @@ print("Waiting for client connection...\n")
 conn, addr = server.accept()
 print("Connected to client:", addr)
 
-# Simulated RARP table (MAC → IP)
 rarp_table = {
     "AA:BB:CC:DD:EE:01": "192.168.1.1",
     "AA:BB:CC:DD:EE:02": "192.168.1.2",
@@ -103,10 +105,11 @@ while True:
 
 conn.close()
 server.close()
+```
 ## client.py:
+```
 import socket
 
-# Create TCP socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('localhost', 9090))
 
@@ -121,6 +124,7 @@ while True:
     print("IP Address:", ip)
 
 client.close()
+```
 
 ## OUPUT -RARP
 ## SERVER:
